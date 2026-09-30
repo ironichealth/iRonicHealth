@@ -503,7 +503,7 @@ function loadEx(i){
   const ex=EXAMPLES[i];
   setType(ex.type);
   ['Provider','PatientId','Diagnosis','Services','Amount','Date','Notes'].forEach(k=>{
-    const el=document.getElementById('f'+k); if(el) el.value=ex[k.toLowerCase()]||'';
+    const el=document.getElementById('f'+k); if(el) el.value=ex[k[0].toLowerCase()+k.slice(1)]||'';
   });
   checkBtn();
 }
@@ -688,7 +688,6 @@ function reset(){
 
 buildExamples(); show('landing');
 </script>
-<script src="ai-api.js"></script>
 <script src="js/disclosure.js"></script>
 </body>
 </html>
