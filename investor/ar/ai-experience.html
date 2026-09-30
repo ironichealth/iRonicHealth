@@ -285,9 +285,9 @@ input[type="number"].inp { direction:ltr; text-align:right; }
       <button class="start-btn" onclick="show('form')">← ابدأ التجربة</button>
       <div class="divider"></div>
       <div class="stats-row">
-        <div><div class="stat-n">٢٥</div><div class="stat-l">نمط احتيال</div></div>
-        <div><div class="stat-n">&lt; ٥ث</div><div class="stat-l">وقت القرار</div></div>
-        <div><div class="stat-n">١٠٠٪</div><div class="stat-l">تغطية المراجعة</div></div>
+        <div><div class="stat-n">25</div><div class="stat-l">نمط احتيال</div></div>
+        <div><div class="stat-n">&lt; 5ث</div><div class="stat-l">وقت القرار</div></div>
+        <div><div class="stat-n">100٪</div><div class="stat-l">تغطية المراجعة</div></div>
       </div>
     </div>
   </div>
@@ -423,7 +423,7 @@ const ANALYSES = {
     clean:['رمز الإجراء متوافق مع تشخيص ICD-10 — تطابق سريري مؤكَّد.',
            'درجة جودة المزود 96/100 — لا سجل احتيال خلال 18 شهرًا.'],
     rec:'اعتماد تلقائي — اجتازت المطالبة جميع فحوصات السريرية والفوترة والأهلية بثقة عالية.',
-    summary:'استشارة خارجية نظيفة في مرفق طبي عالي التقييم. جميع المؤشرات ضمن النطاق المتوقع. لا أنماط احتيال مكتشفة.',
+    summary:'مطالبة استشفاء نظيفة في مرفق طبي عالي التقييم. جميع المؤشرات ضمن النطاق المتوقع. لا أنماط احتيال مكتشفة.',
   },
   'POL-2024-71893': {
     fraud_score:61, risk_level:'medium', decision:'cmo_review', confidence:88,
@@ -441,7 +441,7 @@ const ANALYSES = {
 const PHASES = [
   'استقبال بيانات المطالبة...',
   'مطابقة رموز ICD / CPT...',
-  'فحص ٢٥ نمط احتيال مصري...',
+  'فحص 25 نمط احتيال مصري...',
   'تحليل السجل التاريخي للمزود...',
   'حساب درجة المخاطرة...',
   'إصدار توصية الذكاء الاصطناعي...',
@@ -471,7 +471,7 @@ function gauge(score) {
     <circle cx="${nx}" cy="${ny}" r="8" fill="${c}"/>
     <circle cx="${nx}" cy="${ny}" r="3.5" fill="#fff"/>
     <text x="${cx}" y="${cy+2}" text-anchor="middle" fill="${c}" font-size="42" font-weight="700" font-family="monospace">${score}</text>
-    <text x="${cx}" y="${cy+17}" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="Cairo">/ ١٠٠</text>
+    <text x="${cx}" y="${cy+17}" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="Cairo" direction="ltr">/ 100</text>
     <text x="${cx-R-4}" y="${cy+14}" text-anchor="middle" fill="#CBD5E1" font-size="8">0</text>
     <text x="${cx+R+4}" y="${cy+14}" text-anchor="middle" fill="#CBD5E1" font-size="8">100</text>
   </svg>`;
@@ -630,13 +630,13 @@ function showResults(a) {
 
 function showCMO() {
   const a = state.analysis;
-  document.getElementById('cmoMeta').textContent = `${state.claimId} · درجة المخاطرة ${a.fraud_score} / ١٠٠`;
+  document.getElementById('cmoMeta').textContent = `${state.claimId} · درجة المخاطرة \u2066${a.fraud_score} / 100\u2069`;
   document.getElementById('cmoContent').innerHTML = `
     <div class="card" style="margin-bottom:14px">
       <span class="field-label">ملخص المطالبة</span>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13.5px">
         ${[['المزود',document.getElementById('fProvider').value],
-           ['المبلغ',Number(document.getElementById('fAmount').value).toLocaleString('ar-EG')+' ج.م.'],
+           ['المبلغ',Number(document.getElementById('fAmount').value).toLocaleString('ar-EG-u-nu-latn')+' ج.م.'],
            ['النوع',state.type],['دقة التحليل',a.confidence+'٪']
           ].map(([k,v])=>`<div><span style="color:var(--light);display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px">${k}</span><strong style="color:var(--navy)">${v}</strong></div>`).join('')}
       </div>
@@ -655,7 +655,7 @@ function showAudit(dec) {
   const ok  = dec==='approved' || dec==='auto_approve';
   const c   = ok ? '#1d9e75' : '#dc2626';
   const auditRef = 'AUD-' + Math.random().toString(36).substr(2,9).toUpperCase();
-  const ts = new Date().toLocaleString('ar-EG', { timeZone:'Africa/Cairo' });
+  const ts = new Date().toLocaleString('sv-SE', { timeZone:'Africa/Cairo' }); // YYYY-MM-DD HH:MM:SS, Latin digits, reads the same in RTL
   const note = document.getElementById('cmoNote')?.value || '';
 
   document.getElementById('auditContent').innerHTML = `
@@ -669,7 +669,7 @@ function showAudit(dec) {
       ${[['رقم المطالبة', state.claimId],
          ['مرجع سجل المراجعة', auditRef],
          ['المزود', document.getElementById('fProvider').value],
-         ['المبلغ', Number(document.getElementById('fAmount').value).toLocaleString('ar-EG')+' ج.م.'],
+         ['المبلغ', Number(document.getElementById('fAmount').value).toLocaleString('ar-EG-u-nu-latn')+' ج.م.'],
          ['درجة مخاطرة AI', `${a.fraud_score} / 100`],
          ['قرار الذكاء الاصطناعي', a.decision==='auto_approve'?'قبول تلقائي':a.decision==='cmo_review'?'مراجعة CMO':'رفض تلقائي'],
          ['القرار النهائي', ok?'مقبولة ✓':'مرفوضة ✕'],
