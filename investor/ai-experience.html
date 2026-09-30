@@ -631,7 +631,7 @@ function showCMO(){
     <div class="card" style="margin-bottom:14px">
       <span class="field-label">Claim Summary</span>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13.5px">
-        ${[['Provider',document.getElementById('fProvider').value],['Amount','EGP '+Number(document.getElementById('fAmount').value).toLocaleString()],['Type',state.type],['AI Confidence',a.confidence+'%']].map(([k,v])=>`<div><span style="color:var(--light);display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px">${k}</span><strong style="color:var(--navy)">${v}</strong></div>`).join('')}
+        ${[['Provider',document.getElementById('fProvider').value],['Amount','EGP '+Number(document.getElementById('fAmount').value).toLocaleString('en-US')],['Type',state.type],['AI Confidence',a.confidence+'%']].map(([k,v])=>`<div><span style="color:var(--light);display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px">${k}</span><strong style="color:var(--navy)">${v}</strong></div>`).join('')}
       </div>
     </div>
     <div class="card" style="border-color:#FDE68A;background:#FFFBEB">
@@ -660,7 +660,7 @@ function showAudit(dec){
     <div class="audit-table">
       <div class="audit-ref">AUDIT TRAIL (DEMO) — ${auditRef}</div>
       ${[['Claim ID',state.claimId],['Audit Reference',auditRef],['Provider',document.getElementById('fProvider').value],
-         ['Amount','EGP '+Number(document.getElementById('fAmount').value).toLocaleString()],
+         ['Amount','EGP '+Number(document.getElementById('fAmount').value).toLocaleString('en-US')],
          ['AI Fraud Score',`${a.fraud_score} / 100`],['AI Decision',a.decision.replace(/_/g,' ').toUpperCase()],
          ['Final Status',ok?'APPROVED ✓':'REJECTED ✕'],['Timestamp',ts+' EGT'],
          ['Cryptographic Sig.','RSA-4096 · Signed ✓'],
