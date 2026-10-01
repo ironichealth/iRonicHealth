@@ -584,7 +584,7 @@ function showResults(a){
     <div class="hero-card" style="border:2px solid ${c}20">
       <div class="gauge-wrap">${gauge(a.fraud_score)}</div>
       <div class="hero-right">
-        <div style="font-size:10px;color:var(--light);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">AI Decision</div>
+        <div style="font-size:10px;color:var(--light);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px">Suggested review path</div>
         <div class="dec-badge" style="background:${bg};color:${c};border:1px solid ${c}25">${decLabel}</div>
         <div class="summary-txt">${a.summary}</div>
       </div>
@@ -661,9 +661,9 @@ function showAudit(dec){
       <div class="audit-ref">AUDIT TRAIL (DEMO) — ${auditRef}</div>
       ${[['Claim ID',state.claimId],['Audit Reference',auditRef],['Provider',document.getElementById('fProvider').value],
          ['Amount','EGP '+Number(document.getElementById('fAmount').value).toLocaleString('en-US')],
-         ['AI Fraud Score',`${a.fraud_score} / 100`],['AI Decision',a.decision.replace(/_/g,' ').toUpperCase()],
+         ['AI Fraud Score',`${a.fraud_score} / 100`],['Suggested review path',a.decision.replace(/_/g,' ').toUpperCase()],
          ['Final Status',ok?'APPROVED ✓':'REJECTED ✕'],['Timestamp',ts+' EGT'],
-         ['Cryptographic Sig.','RSA-4096 · Signed ✓'],
+         ['Cryptographic Sig.','RSA-4096 · Signed (planned) ✓'],
          ...(note?[['CMO Note',note]]:[])
       ].map(([k,v])=>`<div class="audit-row"><span class="audit-k">${k}</span><span class="audit-v">${v}</span></div>`).join('')}
     </div>
