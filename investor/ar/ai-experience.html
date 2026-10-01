@@ -574,14 +574,14 @@ function showResults(a) {
                  :                               '✕ رفض تلقائي';
   document.getElementById('rClaimRef').textContent = state.claimId;
   const cb = document.getElementById('rConfBadge');
-  cb.textContent = `دقة \u2066${a.confidence}%\u2069`;
+  cb.textContent = `درجة الثقة \u2066${a.confidence}%\u2069`;
   cb.style.cssText = `background:${bg};color:${c};border:1px solid ${c}30;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:700`;
 
   let html = `
     <div class="hero-card" style="border:2px solid ${c}20">
       <div>${gauge(a.fraud_score)}</div>
       <div class="hero-right">
-        <div style="font-size:10px;color:var(--light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">قرار الذكاء الاصطناعي</div>
+        <div style="font-size:10px;color:var(--light);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px">مسار المراجعة المقترح</div>
         <div class="dec-badge" style="background:${bg};color:${c};border:1px solid ${c}25">${decLabel}</div>
         <div class="summary-txt">${a.summary}</div>
       </div>
@@ -637,7 +637,7 @@ function showCMO() {
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13.5px">
         ${[['المزود',document.getElementById('fProvider').value],
            ['المبلغ',Number(document.getElementById('fAmount').value).toLocaleString('ar-EG-u-nu-latn')+' ج.م.'],
-           ['النوع',state.type],['دقة التحليل',a.confidence+'%']
+           ['النوع',state.type],['درجة الثقة',a.confidence+'%']
           ].map(([k,v])=>`<div><span style="color:var(--light);display:block;font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px">${k}</span><strong style="color:var(--navy)">${v}</strong></div>`).join('')}
       </div>
     </div>
@@ -671,10 +671,10 @@ function showAudit(dec) {
          ['المزود', document.getElementById('fProvider').value],
          ['المبلغ', Number(document.getElementById('fAmount').value).toLocaleString('ar-EG-u-nu-latn')+' ج.م.'],
          ['درجة مخاطرة AI', `${a.fraud_score} / 100`],
-         ['قرار الذكاء الاصطناعي', a.decision==='auto_approve'?'قبول تلقائي':a.decision==='cmo_review'?'مراجعة CMO':'رفض تلقائي'],
+         ['مسار المراجعة المقترح', a.decision==='auto_approve'?'قبول تلقائي':a.decision==='cmo_review'?'مراجعة CMO':'رفض تلقائي'],
          ['القرار النهائي', ok?'مقبولة ✓':'مرفوضة ✕'],
          ['الطابع الزمني', ts],
-         ['التوقيع التشفيري', 'RSA-4096 · موقَّع ✓'],
+         ['التوقيع التشفيري', 'RSA-4096 · موقَّع (مخطط له) ✓'],
          ...(note ? [['ملاحظة المدير الطبي', note]] : []),
         ].map(([k,v])=>`<div class="audit-row"><span class="audit-k">${k}</span><span class="audit-v">${v}</span></div>`).join('')}
     </div>
