@@ -674,7 +674,7 @@ function showAudit(dec) {
          ['مسار المراجعة المقترح', a.decision==='auto_approve'?'قبول تلقائي':a.decision==='cmo_review'?'مراجعة CMO':'رفض تلقائي'],
          ['القرار النهائي', ok?'مقبولة ✓':'مرفوضة ✕'],
          ['الطابع الزمني', ts],
-         ['التوقيع التشفيري', 'RSA-4096 · موقَّع (مخطط له) ✓'],
+         ['التوقيع التشفيري', 'RSA-4096 · موقَّع (مخطط) ✓'],
          ...(note ? [['ملاحظة المدير الطبي', note]] : []),
         ].map(([k,v])=>`<div class="audit-row"><span class="audit-k">${k}</span><span class="audit-v">${v}</span></div>`).join('')}
     </div>
