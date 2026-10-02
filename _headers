@@ -1,0 +1,4 @@
+# Keep the Cloudflare Pages default host out of search engines.
+# Matches this exact host only; ironichealth.com and any other hostname are not affected.
+https://ironichealth-site.pages.dev/*
+  X-Robots-Tag: noindex
