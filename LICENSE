@@ -1,13 +1,43 @@
-Copyright © 2026 Sherif Mohamed Shawqi Ahmed Almeidany (Sherif Almeidany)
-and Islam Mohamed Shawqi Ahmed Almeidany (Dr. Islam Almeidany).
+PROPRIETARY LICENSE — ALL RIGHTS RESERVED
+
+Copyright (c) 2026 Sherif Mohamed Shawqi Ahmed Almeidany and Islam Mohamed Shawqi Ahmed Almeidany.
 All rights reserved.
 
-PROPRIETARY AND CONFIDENTIAL
+Author: Sherif Mohamed Shawqi Ahmed Almeidany.
 
-This software and its associated documentation are the joint
-proprietary property of Sherif Almeidany and Dr. Islam Almeidany.
-No part of this work may be reproduced, distributed, modified, or
-transmitted in any form or by any means without the prior written
-permission of the copyright holders.
+1. Ownership
+   This repository and everything in it — source code, page structure,
+   user-interface designs, screens, text, graphics and documentation —
+   is the exclusive property of the copyright holders named above, jointly.
 
-Unauthorized copying, via any medium, is strictly prohibited.
+2. No license granted
+   No right to copy, modify, distribute, publish, sublicense, sell, or
+   create derivative works from any part of this repository is granted,
+   whether expressly or by implication, without the prior written
+   permission of both copyright holders.
+
+3. Public visibility does not grant rights
+   The fact that this repository, or the website built from it, has been
+   publicly visible at any time does not grant any license or right to
+   any person.
+
+4. Prototype content
+   Screens, dashboards and figures in this repository are demonstration
+   prototypes operating on synthetic data. They are not a clinical tool
+   and contain no real patient data.
+
+5. Third-party material
+   Third-party names, marks, data sources and software components remain
+   the property of their respective owners and are used under their own
+   terms. Their presence does not imply any endorsement or partnership.
+
+6. Earlier license text
+   This license replaces any earlier license text in this repository.
+
+7. Governing law
+   This license is governed by the laws of the Arab Republic of Egypt.
+   The competent Egyptian courts have jurisdiction over any dispute
+   arising from it.
+
+8. Contact
+   Permission requests: sherif@ironichealth.com
